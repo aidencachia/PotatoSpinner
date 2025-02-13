@@ -1,0 +1,11 @@
+#potato {
+    width: 600px;
+    height: 600px;
+    image-rendering: pixelated;
+    cursor: pointer;
+    transition: transform 0.1s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
