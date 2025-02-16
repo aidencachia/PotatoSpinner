@@ -1,19 +1,60 @@
+h1 {
+    text-align:center
+}
+
+h2 {
+    text-align:center
+}
+
 #potato {
-    width: 60vh;
-    height: 60vh;
+    width: 60%;
+    height: 60%;
+
+    display: block;    
+    /* margin: auto; */
+
     image-rendering: pixelated;
     cursor: pointer;
     transition: transform 0.1s linear;
-    align-items: center;
-    justify-content: center;
-    /* user-select: none; */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    border: 0px;
+}
+
+#potato img {
+    width: 100%;
+    height: 100%;
+
+    /* Removes dragging ability to image */
+    
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#clickingSpace {
+    margin: auto;
+
+    width: 60vh;
+    height: 60vh;
+
+    background-color: blueviolet;
+}
+
+.centreChild{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.centreParent{
+    position: relative;
 }
 
 @media screen and (orientation: portrait) {
-    #potato {
+    #clickingSpace {
         width: 60vw;
         height: 60vw;
     }
