@@ -1,29 +1,72 @@
+* {
+    image-rendering: pixelated;
+    margin: 0%;
+    color: beige;
+}
+
+.atma-light {
+    font-family: "Atma", serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .atma-regular {
+    font-family: "Atma", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .atma-medium {
+    font-family: "Atma", serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .atma-semibold {
+    font-family: "Atma", serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .atma-bold {
+    font-family: "Atma", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+
+body {
+    display: flex;
+    flex-direction: row;
+    padding: 0%;
+}
+
 h1 {
-    text-align:center
+    text-align:center;
+    -webkit-text-stroke: 2px black;
 }
 
 h2 {
-    text-align:center
+    text-align:center;
+    font-size:xx-large;
+    -webkit-text-stroke: 2px rgb(35, 35, 35);
 }
-
 #potato {
     width: 60%;
-    height: 60%;
+    height: auto;
 
     display: block;    
     /* margin: auto; */
-
-    image-rendering: pixelated;
     cursor: pointer;
     transition: transform 0.1s linear;
     border: 0px;
+
+    background-color: transparent;
 }
 
 #potato img {
     width: 100%;
     height: 100%;
-
-    /* Removes dragging ability to image */
     
     -webkit-user-drag: none;
     user-select: none;
@@ -33,12 +76,13 @@ h2 {
 }
 
 #clickingSpace {
-    margin: auto;
-
     width: 60vh;
-    height: 60vh;
+    height: 100vh;
 
-    background-color: blueviolet;
+    background-image: url("/img/clickingarea.webp");
+    background-position: center; /*Center the image*/
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 .centreChild{
@@ -55,7 +99,11 @@ h2 {
 
 @media screen and (orientation: portrait) {
     #clickingSpace {
-        width: 60vw;
-        height: 60vw;
+        width: 100%;
+        height: 100vh;
+    }
+
+    body {
+        flex-direction: column;
     }
 }

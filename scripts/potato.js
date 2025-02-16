@@ -26,7 +26,7 @@ function spin() {
     
     revs += (angle - prevAngle)/360;
 
-    document.getElementById("Revs").innerHTML = revs
+    document.getElementById("Revs").innerHTML = Math.round(revs*100)/100
 }
 
 
