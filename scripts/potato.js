@@ -23,13 +23,13 @@ function spin() {
     } else {
         document.getElementById("potato").src = spinningImage;
     }
-    addRevs((angle - prevAngle)/360);
-    console.log(angle); 
+    
+    revs += (angle - prevAngle)/360;
 }
 
 
 function increaseSpin(){
-    speed += 1; // Increase speed on click
+    speed += 0.1; // Increase speed on click
     if (!spinning) {
         spinning = true;
         spin();
