@@ -11,7 +11,7 @@ function spin() {
         angle += speed; // Increase rotation
         speed *= 0.98; // Slow down gradually
 
-        document.getElementById("potato").style.transform = `rotate(${angle}deg)`;
+        document.getElementById("potato").style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
         
         requestAnimationFrame(spin);
     } else {
@@ -25,6 +25,8 @@ function spin() {
     }
     
     revs += (angle - prevAngle)/360;
+
+    document.getElementById("Revs").innerHTML = revs
 }
 
 
