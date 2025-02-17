@@ -26,11 +26,13 @@ function spin() {
     
     revs += (angle - prevAngle)/360;
 
-    document.getElementById("Revs").innerHTML = Math.round(revs*100)/100
+    document.getElementById("Revs").innerHTML = (Math.round(revs*100)/100).toFixed(2);
 }
 
 
 function increaseSpin(){
+    Navigator.vibrate(200);
+    
     speed += 0.6 * (clickStrengthLevel+1); // Increase speed on click
     if (!spinning) {
         spinning = true;

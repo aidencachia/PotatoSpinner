@@ -9,7 +9,7 @@ function upgradeAutoMove() {
         autoMoveLevel++;
 
         document.getElementById("autoMoveLevel").innerHTML = autoMoveLevel;
-        document.getElementById("autoMoveCost").innerHTML = Math.pow(1.8,autoMoveLevel);
+        document.getElementById("autoMoveCost").innerHTML = (Math.ceil(Math.pow(1.8,autoMoveLevel)*100)/100).toFixed(2);
         spin();
     }
 }
@@ -20,7 +20,7 @@ function upgradeDecreaseDeceleration() {
         decreaseDecelerationLevel++;
   
         document.getElementById("decreaseDecelerationLevel").innerHTML = decreaseDecelerationLevel;
-        document.getElementById("decreaseDecelerationCost").innerHTML = Math.pow(1.8,decreaseDecelerationLevel);
+        document.getElementById("decreaseDecelerationCost").innerHTML = (Math.ceil(Math.pow(1.8,decreaseDecelerationLevel)*100)/100).toFixed(2);
     }
 }
 
@@ -30,6 +30,6 @@ function upgradeClickStrength() {
         clickStrengthLevel++;
   
         document.getElementById("clickStrengthLevel").innerHTML = clickStrengthLevel;
-        document.getElementById("clickStrengthCost").innerHTML = Math.pow(1.8,clickStrengthLevel);
+        document.getElementById("clickStrengthCost").innerHTML =  (Math.ceil(Math.pow(1.8,clickStrengthLevel)*100)/100).toFixed(2);
     }
 }
