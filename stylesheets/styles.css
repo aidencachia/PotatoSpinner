@@ -36,8 +36,6 @@
   
 
 body {
-    display: flex;
-    flex-direction: row;
     padding: 0%;
 }
 
@@ -91,7 +89,7 @@ h2 {
 }
 
 #upgradesSection {
-    position: static;
+    position: absolute;
     left: 66vw;
     align-items: center;
     background-color: chocolate;
@@ -130,6 +128,13 @@ h2 {
         height: 100vh;
     }
 
+    #upgradesSection {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        align-items: center;
+        background-color: chocolate;
+    }
     body {
         flex-direction: column;
     }
