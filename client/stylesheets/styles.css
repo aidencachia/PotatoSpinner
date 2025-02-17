@@ -2,6 +2,13 @@
     image-rendering: pixelated;
     margin: 0%;
     color: beige;
+    
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .atma-light {
@@ -69,13 +76,6 @@ h2 {
 #potato img {
     width: 100%;
     height: 100%;
-    
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
 }
 
 .section {
@@ -92,13 +92,18 @@ h2 {
 
     position: fixed;
     z-index: -1;
+
+    box-shadow: 0 0 200px rgba(0,0,0,1) inset;
 }
 
 #upgradesSection {
     position: absolute;
     left: 66vw;
     align-items: center;
-    background-color: chocolate;
+    width: 34vw;
+
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
 
 .upgrade:nth-child(even) {
@@ -121,9 +126,11 @@ h2 {
 }
 
 #upgradeButtons button{
-    width: 100%;
+    width: 80%;
     height: 20vh;
     font-size: large;
+
+    margin: 5% 10%;
 
     cursor: pointer;
 }
@@ -139,7 +146,7 @@ h2 {
         left: 0;
         top: 100vh;
         width: 100vw;
-        height: 60vh;
+        height: auto;
         align-items: center;
         background-color: chocolate;
     }
