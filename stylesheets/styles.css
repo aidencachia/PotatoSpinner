@@ -75,14 +75,33 @@ h2 {
     -ms-user-select: none;
 }
 
-#clickingSpace {
-    width: 60vh;
+.section {
+    width: 33vw;
     height: 100vh;
+}
 
+#clickingSpace {
     background-image: url("/img/clickingarea.webp");
-    background-position: center; /*Center the image*/
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+
+    position: fixed;
+    z-index: -1;
+}
+
+#upgradesSection {
+    position: static;
+    left: 66vw;
+    align-items: center;
+    background-color: chocolate;
+}
+
+.upgrade:nth-child(even) {
+    background-color: #333;
+}
+.upgrade:nth-child(odd) {
+    background-color: #2d2c49;
 }
 
 .centreChild{
@@ -97,9 +116,17 @@ h2 {
     position: relative;
 }
 
+#upgradeButtons button{
+    width: 100%;
+    height: 20vh;
+    font-size: large;
+
+    cursor: pointer;
+}
+
 @media screen and (orientation: portrait) {
-    #clickingSpace {
-        width: 100%;
+    .section {
+        width: 100vw;
         height: 100vh;
     }
 

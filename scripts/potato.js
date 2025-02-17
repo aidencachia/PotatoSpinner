@@ -7,21 +7,21 @@ const stoppedImage = "img/potato_ideal_100x100.webp";
 
 function spin() {
     let prevAngle = angle;
-    if (speed > 0.01) { // Keep spinning until nearly stopped
+    // if (speed > 0.01) { // Keep spinning until nearly stopped
         angle += speed; // Increase rotation
-        speed *= 0.98; // Slow down gradually
+        speed = Math.max(speed*(1-Math.pow(0.2,decreaseDecelerationLevel*0.2+1)), autoMoveLevel*0.1); 
 
         document.getElementById("potato").style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
         
         requestAnimationFrame(spin);
-    } else {
-        spinning = false; // Stop animation loop when speed is very low
-    }
+    // } else {
+    //     spinning = false; // Stop animation loop when speed is very low
+    // }
 
     if(speed < 0.5){
-        document.getElementById("potato").src = stoppedImage;
+        document.getElementById("potatoImg").src = stoppedImage;
     } else {
-        document.getElementById("potato").src = spinningImage;
+        document.getElementById("potatoImg").src = spinningImage;
     }
     
     revs += (angle - prevAngle)/360;
@@ -31,7 +31,7 @@ function spin() {
 
 
 function increaseSpin(){
-    speed += 0.1; // Increase speed on click
+    speed += 0.6 * (clickStrengthLevel+1); // Increase speed on click
     if (!spinning) {
         spinning = true;
         spin();
