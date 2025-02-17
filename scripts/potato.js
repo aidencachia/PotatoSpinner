@@ -31,8 +31,8 @@ function spin() {
 
 
 function increaseSpin(){
-    Navigator.vibrate(200);
-    
+    window.navigator.vibrate(200);
+
     speed += 0.6 * (clickStrengthLevel+1); // Increase speed on click
     if (!spinning) {
         spinning = true;
