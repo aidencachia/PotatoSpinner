@@ -1,8 +1,15 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
+const path = require('path');;
 
-app.get("/api", (req, res) => {
-    res.json({"users": ["userOne", "userTwo", "userThree" ]})
-})
+const port = 8080;
 
-app.listen(5000, () => {console.log("Server started on port 5000")})
+app.get('/scripts/potato.js', (req, res) => {
+    res.type('application/javascript'); // sets the Content-Type header
+    res.sendFile(path.join(__dirname, 'client', 'scripts', 'potato.js'));
+  });
+  
+  // Fallback: serve other static files normally
+app.use(express.static(path.join(__dirname, 'client')));
+
+app.listen(port, () => {console.log("Server started on port "+port)});
