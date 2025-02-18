@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');;
 
-const port = 8080;
+const port = 80;
 
 app.get('/scripts/potato.js', (req, res) => {
     res.type('application/javascript'); // sets the Content-Type header
