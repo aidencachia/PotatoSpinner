@@ -80,3 +80,23 @@ function increaseSpin(){
         spin();
     }
 }
+
+function save(){
+    if(localStorage.getItem("userId") == null){
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            revs: revs,
+            upgrades: {
+                autoMove: autoMoveLevel,
+                decreaseDeceleration: decreaseDecelerationLevel,
+                clickStrength: clickStrengthLevel
+            }
+          }),
+      };
+      fetch("http://127.0.0.1:80/save", requestOptions);
+    }
+}
