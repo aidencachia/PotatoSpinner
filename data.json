@@ -1,0 +1,12 @@
+{
+	"data": {
+		"6c51931a-19b1-46a5-bfc9-b4bad4214440": {
+			"revs": 6.6765714289375175,
+			"upgrades": {
+				"autoMove": 2,
+				"decreaseDeceleration": 2,
+				"clickStrength": 2
+			}
+		}
+	}
+}
