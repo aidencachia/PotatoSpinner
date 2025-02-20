@@ -9,7 +9,34 @@ let spinning = false;
 const spinningImage = "img/potato_spinning_100x100.webp";
 const stoppedImage = "img/potato_ideal_100x100.webp";
 
-window.onload = load();
+const upgradeButtonsInfo = {
+    autoMove: {
+        text: "Auto Move",
+        id: "autoMoveButton",
+        upgradeFunction: upgradeAutoMove,
+        levelId: "autoMoveLevel",
+        costId: "autoMoveCost"
+    },
+    decreaseDeceleration: {
+        text: "Decrease Deceleration",
+        id: "decreaseDecelerationButton",
+        upgradeFunction: upgradeDecreaseDeceleration,
+        levelId: "decreaseDecelerationLevel",
+        costId: "decreaseDecelerationCost"
+    },
+    clickStrength: {
+        text: "Click Strength",
+        id: "clickStrengthButton",
+        upgradeFunction: upgradeClickStrength,
+        levelId: "clickStrengthLevel",
+        costId: "clickStrengthCost"
+    }
+}
+
+let lastTimestamp = performance.now();
+let rpm = 0; // real-time rpm
+
+window.onload = load;
 setInterval(save, 10000);
 
 function upgradeAutoMove() {
@@ -44,10 +71,22 @@ function upgradeClickStrength() {
 }
 
 function spin() {
+    const currentTimestamp = performance.now();
+    let deltaTime = (currentTimestamp - lastTimestamp) / 1000; // seconds
+    lastTimestamp = currentTimestamp;
+    
     let prevAngle = angle;
     // if (speed > 0.01) { // Keep spinning until nearly stopped
         angle += speed; // Increase rotation
         speed = Math.max(speed*(1-Math.pow(0.2,decreaseDecelerationLevel*0.2+1)), autoMoveLevel*0.1); 
+
+        // Guard against deltaTime being zero
+        if (deltaTime < 0.001) {
+            deltaTime = 0.001;  // minimum threshold to avoid infinity
+        }
+        rpm = ((angle - prevAngle) / 360) * (60 / deltaTime);
+        // Optional: display rpm in a dedicated element if exists:
+        // document.getElementById("rpm").innerText = rpm.toFixed(2);
 
         document.getElementById("potato").style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
         
@@ -68,7 +107,8 @@ function spin() {
     
     revs += (angle - prevAngle)/360;
 
-    document.getElementById("Revs").innerHTML = (Math.round(revs*100)/100).toFixed(2);
+    document.getElementById("Revs").innerHTML = (Math.floor(revs*100)/100).toFixed(2);
+    document.getElementById("RPM").innerHTML = rpm.toFixed(2);
 }
 
 
@@ -126,6 +166,8 @@ async function save(){
 }
 
 async function load(){
+    createButtons();
+
     if(localStorage.getItem("userId") != null){
         const res = await fetch(window.location.origin+"/save?key="+localStorage.getItem("userId"));
         const data = await res.json();
@@ -135,12 +177,39 @@ async function load(){
         decreaseDecelerationLevel = data["upgrades"]["decreaseDeceleration"];
         clickStrengthLevel = data["upgrades"]["clickStrength"];
 
-        document.getElementById("Revs").innerHTML = (Math.round(revs*100)/100).toFixed(2);
+        document.getElementById("Revs").innerHTML = (Math.floor(revs*100)/100).toFixed(2);
         document.getElementById("autoMoveLevel").innerHTML = autoMoveLevel;
         document.getElementById("autoMoveCost").innerHTML = (Math.ceil(Math.pow(1.8,autoMoveLevel)*100)/100).toFixed(2);
         document.getElementById("decreaseDecelerationLevel").innerHTML = decreaseDecelerationLevel;
         document.getElementById("decreaseDecelerationCost").innerHTML = (Math.ceil(Math.pow(1.8,decreaseDecelerationLevel)*100)/100).toFixed(2);
         document.getElementById("clickStrengthLevel").innerHTML = clickStrengthLevel;
         document.getElementById("clickStrengthCost").innerHTML = (Math.ceil(Math.pow(1.8,clickStrengthLevel)*100)/100).toFixed(2);
+
+        spin();
+    }
+}
+
+function createButtons(){
+    const buttonContainer = document.getElementById("upgradeButtonContainer");
+
+    for(const [key, value] of Object.entries(upgradeButtonsInfo)){
+        const button = document.createElement("button");
+        button.innerHTML = value.text;
+        button.id = value.id;
+        button.className = "upgrade"; // use className instead of class
+        button.onclick = value.upgradeFunction;
+
+        const level = document.createElement("div");
+        level.className = "level";
+        level.id = value.levelId;
+        level.innerHTML = "0";
+
+        const cost = document.createElement("p");
+        cost.innerHTML = "Cost: <span id='"+value.costId+"'>1.00</span>";
+
+        button.appendChild(level);
+        button.appendChild(cost);
+
+        buttonContainer.appendChild(button);
     }
 }

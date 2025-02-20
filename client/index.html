@@ -14,30 +14,15 @@
 </head>
 <body>
     <div id="clickingSpace" class="centreParent section">
-        <h1 class="atma-bold">Money Amount</h1>
-        <h2 id="Revs" class="atma-bold">0.00</h2>
+        <h2 class="atma-bold"><span id="Revs">0</span> Revs</h2>
         <button id="potato" class="centreChild" onclick="increaseSpin()">
             <img id="potatoImg" src="img/potato_ideal_100x100.webp" alt="Potato">
         </button>
+        <h2 class="atma-bold"><span id="RPM">0</span> RPM</h2>
     </div>
     <div id="upgradesSection" class="section">
         <h1 class="atma-bold">Upgrades</h1>
-        <div id="upgradeButtons">
-            <button class="upgrade" onclick="upgradeAutoMove()">
-                Auto Move <span id="autoMoveLevel" class="level">0</span> <br>
-                Cost: <span id="autoMoveCost" class="cost">1.00</span>
-            </button>
-    
-            <button class="upgrade" onclick="upgradeDecreaseDeceleration()">
-                Decrease Deceleration <span id="decreaseDecelerationLevel" class="level">0</span> <br>
-                Cost: <span id="decreaseDecelerationCost" class="cost">1.00</span>
-            </button>
-
-            <button class="upgrade" onclick="upgradeClickStrength()">
-                Click Strength <span id="clickStrengthLevel" class="level">0</span> <br>
-                Cost: <span id="clickStrengthCost" class="cost">1.00</span>
-            </button>
-        </div>
+        <div id="upgradeButtonContainer"></div>
     </div>
 </body>
 </html>
