@@ -99,7 +99,7 @@ async function save(){
                 }
             }),
         };
-        const res = await fetch("http://127.0.0.1:80/save", requestOptions);
+        const res = await fetch(window.location.origin+"/save", requestOptions);
         const data = await res.json();
 
         console.log(data["key"]);
@@ -121,13 +121,13 @@ async function save(){
                 }
             }),
         };
-        const res = await fetch("http://127.0.0.1:80/save?key="+localStorage.getItem("userId"), requestOptions);
+        const res = await fetch(window.location.origin+"/save?key="+localStorage.getItem("userId"), requestOptions);
     }
 }
 
 async function load(){
     if(localStorage.getItem("userId") != null){
-        const res = await fetch("http://127.0.0.1:80/save?key="+localStorage.getItem("userId"));
+        const res = await fetch(window.location.origin+"/save?key="+localStorage.getItem("userId"));
         const data = await res.json();
 
         revs = data["revs"];
