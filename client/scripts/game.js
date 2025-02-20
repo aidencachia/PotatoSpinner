@@ -196,7 +196,7 @@ function createButtons(){
         const button = document.createElement("button");
         button.innerHTML = value.text;
         button.id = value.id;
-        button.className = "upgrade"; // use className instead of class
+        button.className = "upgrade atma-bold";
         button.onclick = value.upgradeFunction;
 
         const level = document.createElement("div");
@@ -205,7 +205,8 @@ function createButtons(){
         level.innerHTML = "0";
 
         const cost = document.createElement("p");
-        cost.innerHTML = "Cost: <span id='"+value.costId+"'>1.00</span>";
+        cost.innerHTML = "<span id='"+value.costId+"'>1.00</span> Revs";
+        cost.className = "atma-light"
 
         button.appendChild(level);
         button.appendChild(cost);

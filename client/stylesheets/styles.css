@@ -121,6 +121,7 @@ h2 {
     cursor: pointer;
 
     border: white;
+    font-size: large;
     border-style: solid;
 }
 
@@ -136,12 +137,12 @@ h2 {
     top: 50%;              
     right: 10px;           
     transform: translateY(-50%);
-    font-size: 7rem;      
+    font-size: 7vw;      
     font-weight: bold;
     margin: 0;             
     text-align: right;
     line-height: normal;
-    pointer-events: none; /* allow pointer events to pass through */
+    pointer-events: none; 
 }
 
 .centreChild{
@@ -173,5 +174,9 @@ h2 {
     }
     body {
         flex-direction: column;
+    }
+
+    .upgrade .level {
+        font-size: 7vh;
     }
 }

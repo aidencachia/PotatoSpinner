@@ -2,12 +2,12 @@
   "name": "potato-spinner",
   "version": "1.0.0",
   "description": "Bored? Spin it! Spin the Potato!! :)",
-  "main": "server.js",
+  "main": "./api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo \"Error: no build specified\" && exit 0",
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node ./api/index",
+    "dev": "nodemon ./api/index"
   },
   "repository": {
     "type": "git",

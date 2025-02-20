@@ -5,11 +5,12 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
 const port = 433;
+const dataFilePath = path.join(__dirname, 'data.json');
 
 app.use(express.json())
 
 app.post('/save', (req, res) => {
-  fs.readFile('data.json', 'utf8', function (err, data) {
+  fs.readFile(dataFilePath, 'utf8', function (err, data) {
     if (err) throw err;
 
     let key;
@@ -22,7 +23,7 @@ app.post('/save', (req, res) => {
 
     obj["data"][key] = req.body;
 
-    fs.writeFile('data.json', JSON.stringify(obj, null, "\t"),
+    fs.writeFile(dataFilePath, JSON.stringify(obj, null, "\t"),
     err => {
         // Checking for errors 
         if (err) throw err;
@@ -39,7 +40,7 @@ app.post('/save', (req, res) => {
 
 app.patch('/save', (req, res) => {
 
-  fs.readFile('data.json', 'utf8', function (err, data) {
+  fs.readFile(dataFilePath, 'utf8', function (err, data) {
     if (err) throw err;
 
     const obj = JSON.parse(data);
@@ -64,7 +65,7 @@ app.patch('/save', (req, res) => {
 });
 
 app.get('/save', (req, res) => {
-  fs.readFile('data.json', 'utf8', function (err, data) {
+  fs.readFile(dataFilePath, 'utf8', function (err, data) {
     if (err) throw err;
 
     const obj = JSON.parse(data);
@@ -74,6 +75,6 @@ app.get('/save', (req, res) => {
   });
 });
   
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, '..' , 'client')));
 
 app.listen(port, () => {console.log("Server started on port "+port)});
