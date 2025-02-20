@@ -7,6 +7,14 @@
 				"decreaseDeceleration": 2,
 				"clickStrength": 2
 			}
+		},
+		"8bea3320-0cd6-461e-9ace-9e5c3956971b": {
+			"revs": 6.818860205972498,
+			"upgrades": {
+				"autoMove": 4,
+				"decreaseDeceleration": 1,
+				"clickStrength": 2
+			}
 		}
 	}
 }
