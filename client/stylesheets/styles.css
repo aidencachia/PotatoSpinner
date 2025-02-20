@@ -106,11 +106,42 @@ h2 {
     background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
 
+.upgrade {
+    width: calc(100% - 20px); 
+    height: 20vh;
+    border-radius: 5vw;
+    font-size: large;
+    margin: 5% auto; 
+    display: flex;              
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;              
+    position: relative;   
+    cursor: pointer;
+
+    border: white;
+    border-style: solid;
+}
+
 .upgrade:nth-child(even) {
     background-color: #333;
 }
 .upgrade:nth-child(odd) {
     background-color: #2d2c49;
+}
+
+.upgrade .level {
+    position: absolute;    
+    top: 50%;              
+    right: 10px;           
+    transform: translateY(-50%);
+    font-size: 7rem;      
+    font-weight: bold;
+    margin: 0;             
+    text-align: right;
+    line-height: normal;
+    pointer-events: none; /* allow pointer events to pass through */
 }
 
 .centreChild{
@@ -123,16 +154,6 @@ h2 {
 
 .centreParent{
     position: relative;
-}
-
-#upgradeButtons button{
-    width: 80%;
-    height: 20vh;
-    font-size: large;
-
-    margin: 5% 10%;
-
-    cursor: pointer;
 }
 
 @media screen and (orientation: portrait) {
