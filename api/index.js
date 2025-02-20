@@ -51,7 +51,7 @@ app.patch('/save', (req, res) => {
 
     obj["data"][key] = req.body;
 
-    fs.writeFile('data.json', JSON.stringify(obj, null, "\t"),
+    fs.writeFile(dataFilePath, JSON.stringify(obj, null, "\t"),
     err => {
         // Checking for errors 
         if (err) throw err;

@@ -9,9 +9,9 @@
 			}
 		},
 		"8bea3320-0cd6-461e-9ace-9e5c3956971b": {
-			"revs": 5.823795177257647,
+			"revs": 18.41232556017021,
 			"upgrades": {
-				"autoMove": 6,
+				"autoMove": 5,
 				"decreaseDeceleration": 4,
 				"clickStrength": 4
 			}
